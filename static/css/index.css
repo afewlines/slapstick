@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+}
+
+.box {
+  width     : 100%;
+  text-align: center;
+  padding   : 1%;
+  color     : #bfbfbf;
+}
+
+.button {
+  display         : block;
+  width           : 5.125em;
+  height          : auto;
+  margin          : 25px auto 10px;
+  padding         : 1px 0;
+  background-color: #fff;
+  color           : #3a3c38;
+  text-align      : center;
+  font-weight     : lighter;
+  font-size       : 1.125em;
+  transition      : width 0.5s ease-in-out, background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+.button:hover {
+  background-color: rgba(255, 255, 255, 0);
+  color           : #fff;
+  width           : 4.625em;
+}
+
+#username {
+  width           : 20em;
+  height          : auto;
+  margin          : auto;
+  padding         : 1.25% 2.5%;
+  outline         : none;
+  border          : none;
+  background-color: #fff;
+  color           : #3a3c38;
+  font-size       : 1.125em;
+  transition      : background-color 1s ease-in-out, color 1s ease-in-out;
+}
+
+#username:focus {
+  background-color: rgba(255, 255, 255, 0);
+  color           : #fff;
+}

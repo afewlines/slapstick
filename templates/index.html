@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>seeker's cards - home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link rel="shortcut icon" href="../static/favicon.png">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <div class="header">
+        S L A P S T I C K
+      </div>
+
+      <div class="box" id="landing">
+        <p>
+          how are we today? good?
+          <br>
+          wonderful.
+          <br>
+          <br>
+          enter a username and enjoy.
+        </p>
+      </div>
+      <div class="box" id="entrance">
+        <form id="usernameForm">
+          <input name="username" id="username" placeholder="username" maxlength="32" align="middle" required="required">
+          <br>
+          <div class="button" id="submitUsername" onclick="submitUsername()">
+            submit
+          </div>
+        </form>
+      </div>
+
+      <div class="footer">
+        <p>copyrighted 20xx, probably</p>
+      </div>
+    </div>
+
+  </body>
+
+  <script type="text/javascript" src="../static/js/socket.io.min.js"></script>
+  <script src="../static/js/index.js">
+    console.log("loaded")
+  </script>
+
+</html>

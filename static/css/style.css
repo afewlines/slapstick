@@ -1,0 +1,36 @@
+body {
+  background : #3a3c38;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.wrapper {
+  width     : 100%;
+  height    : 500px;
+  margin-top: calc(40vh - 250px);
+}
+
+.header {
+  width           : 100%;
+  max-width       : 550px;
+  height          : 4em;
+  margin          : auto;
+  padding-top     : 1.25em;
+  text-align      : center;
+  font-size       : 2em;
+  font-weight     : 900;
+  background-color: #c69999;
+  color           : #3a3c38;
+}
+
+.footer {
+  width           : 100%;
+  max-width       : 550px;
+  height          : 4em;
+  margin          : auto;
+  padding         : 0.5em;
+  text-align      : center;
+  font-weight     : lighter;
+  font-size       : 0.9em;
+  background-color: #c69999;
+  color           : #3a3c38;
+}

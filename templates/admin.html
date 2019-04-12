@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>seeker's cards - admin</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="../static/favicon.png">
+  </head>
+
+  <body>
+
+    <div class="header">
+      <h2>welcome to seeker's cards.</h2>
+    </div>
+
+    <br>
+
+    <table>
+      <tr>
+        <th>username</th>
+        <th>points</th>
+        <th>remove</th>
+      </tr>
+      {% for player in players %}
+        <tr>
+          <td>
+            {{ player }}
+          </td>
+          <td>
+            {{ players[player][0] }}
+          </td>
+          <td>
+            <form method="post">
+              <input type="hidden" name="target" value="{{player}}">
+              <input type="submit" value="remove">
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+    <br>
+    <div class="start" onclick="startGame()">
+      <p>start game</p>
+    </div>
+
+    <br>
+    <div class="start" onclick="sendPing()">
+      <p>send ping</p>
+    </div>
+
+    <br>
+
+    <div class="footer">
+      <p>copyrighted 20xx, probably</p>
+    </div>
+
+  </body>
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+  <script src="../static/js/index.js">
+    console.log("loaded")
+  </script>
+</html>

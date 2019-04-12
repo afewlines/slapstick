@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>seeker's cards</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/play.css">
+  </head>
+
+  <body>
+
+    <div class="header">
+      welcome,{{ username }}.
+    </div>
+
+    <br>
+    <div class="promptbox">
+      <h4 id="prompt"></h4>
+    </div>
+    <div class="promptbox">
+      <p id="judge">waiting to start</h4>
+    </div>
+    <br>
+
+    <div class="cardholder" id="holder">
+      <div class="subbox">
+        <p>~instructions~</p>
+        <p>hold on tite</p>
+        <p>the game'll start shortly</p>
+      </div>
+      <div class="subbox">
+        <p>then select an answer</p>
+        <p>pray to whatever god(s) you believe in</p>
+        <p>and smack that submit button</p>
+      </div>
+    </div>
+
+    <div class="choosecard" id="choosecard" onclick="submitCards(this)">
+      <p>select</p>
+    </div>
+
+    <div class="leaderboard" id="leaderboard"></div>
+
+    <div class="footer">
+      <p>copyrighted 20xx, probably</p>
+    </div>
+
+  </body>
+</html>
+
+<script type="text/javascript" src="../static/js/socket.io.min.js"></script>
+<script src="../static/js/play.js">
+  console.log("loaded")
+</script>
