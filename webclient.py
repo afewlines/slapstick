@@ -5,14 +5,11 @@ from random import shuffle
 from flask import Flask, redirect, render_template, request, url_for
 from flask_socketio import SocketIO, emit
 
+from brains import Brains
+
 app = Flask(__name__)
 socketio = SocketIO(app)
-players = {}  # {"drongle": [0, []], "dingle": [4, []]}
-global chooser_ordered
-chooser_ordered = []
-global card_pot
-card_pot = []
-current_prompt = None
+brains = Brains()
 chooser = ""
 
 
@@ -29,14 +26,11 @@ def redirect_to_home():
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
     if request.method == 'POST':
-        global chooser_ordered
         username = request.form['target']
         print("\nREMOVING", username)
-        players.pop(username)
-        chooser_ordered = [
-            user for user in chooser_ordered if user != username]
+        brains.players_remove(username)
 
-    return render_template('admin.html', players=players)
+    return render_template('admin.html', players=brains.players_get())
 
 
 @app.route('/play/<username>', methods=['GET', 'POST'])
@@ -49,24 +43,26 @@ def play_user(username):
 # SOCKET I/O
 @socketio.on('user connect')
 def user_connect(username):
-    print("\nCONNECTING", username['data'])
+    print("\nCONNECTING:", username['data'])
     # new player with 0 points created
-    players[username['data']] = [0]
+    if brains.players_add(username['data']):
+        print("CONNECTED:", username['data'])
+    else:
+        print(username['data'], "FAILED TO CONNECT")
     return
+
+
+def update_leaderboard():
+    emit('update leaderboard', brains.players_get(), broadcast=True)
 
 
 @socketio.on('ping')
 def ping():
     print("\nPING")
+    emit('ping out', broadcast=True)
 
 #
 # HELPER FUNCTIONS
-
-
-def update_leaderboard():
-    leaderboard = ["{}: {}".format(player, players[player][0])
-                   for player in players]
-    emit('update leaderboard', "|".join(leaderboard), broadcast=True)
 
 
 def main():

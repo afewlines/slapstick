@@ -5,60 +5,50 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="../static/favicon.png">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/admin.css">
   </head>
 
-  <body>
+  <body onload="updatePlayers()">
 
-    <div class="header">
-      <h2>welcome to seeker's cards.</h2>
-    </div>
+    <div class="wrapper">
+      <div class="header">
+        seeker's cards: admin
+      </div>
 
-    <br>
+      <div class="box" id="landing">
+        <table class="players">
+          <tr>
+            <th>name</th>
+            <th>score</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>dweeble</td>
+            <td>50</td>
+            <td>[ v]</td>
+          </tr>
+        </table>
+      </div>
 
-    <table>
-      <tr>
-        <th>username</th>
-        <th>points</th>
-        <th>remove</th>
-      </tr>
-      {% for player in players %}
-        <tr>
-          <td>
-            {{ player }}
-          </td>
-          <td>
-            {{ players[player][0] }}
-          </td>
-          <td>
-            <form method="post">
-              <input type="hidden" name="target" value="{{player}}">
-              <input type="submit" value="remove">
-            </form>
-          </td>
-        </tr>
-      {% endfor %}
-    </table>
+      <div class="buttons">
+        <div class="button" style="transform-origin: left;" onclick="startGame()">
+          start game
+        </div>
+        <div class="button" style="transform-origin: right;" onclick="sendPing()">
+          send ping
+        </div>
+      </div>
 
-    <br>
-    <div class="start" onclick="startGame()">
-      <p>start game</p>
-    </div>
-
-    <br>
-    <div class="start" onclick="sendPing()">
-      <p>send ping</p>
-    </div>
-
-    <br>
-
-    <div class="footer">
-      <p>copyrighted 20xx, probably</p>
+      <div class="footer">
+        <p>copyrighted 20xx, probably</p>
+      </div>
     </div>
 
   </body>
 
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
-  <script src="../static/js/index.js">
+  <script type="text/javascript" src="../static/js/socket.io.min.js"></script>
+  <script src="../static/js/admin.js">
     console.log("loaded")
   </script>
 </html>

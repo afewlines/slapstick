@@ -4,13 +4,14 @@ var submitted = false;
 var difference = 0;
 var started = false;
 var judge = false;
+var username = decodeURIComponent(window.location.pathname.split("/")[2])
 
 socket.on('connect', function () {
-  socket.emit('user connect', { data: "{{ username }}" });
+  socket.emit('user connect', { data: username });
 });
 
 socket.on('starting', function (chooser) {
-  if (chooser == "{{username}}") {
+  if (chooser == username) {
     window.alert('you are judging');
     judge = true;
     document.getElementById("choosecard").style.display = "none";
@@ -19,7 +20,7 @@ socket.on('starting', function (chooser) {
   }
   document.getElementById("judge").innerHTML = "current judge: " + chooser;
   started = true;
-  socket.emit('get hand', { data: "{{ username }}" });
+  socket.emit('get hand', { data: username });
   choosecard = document.getElementById("choosecard");
   choosecard.style.backgroundColor = "";
   choosecard.style.width = "";
@@ -186,7 +187,7 @@ function submitCards(elmnt) {
   if (selected.length == difference) {
     submitted = true;
     socket.emit('submit cards', {
-      'data': ["{{username}}", selected]
+      'data': [username, selected]
     });
     elmnt.style.backgroundColor = "#c2d3c0";
     elmnt.style.width = "8em";

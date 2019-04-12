@@ -1,0 +1,63 @@
+* {
+  box-sizing: border-box;
+}
+
+.box {
+  width     : 50%;
+  margin    : auto;
+  text-align: left;
+  padding   : 1%;
+  color     : #bfbfbf;
+}
+
+.box table {
+  margin: auto;
+}
+
+.box th {
+  width: 45%;
+}
+
+.buttons {
+  width     : 50%;
+  left      : 37.5%;
+  height    : 4em;
+  margin    : auto;
+  text-align: center;
+}
+
+.button {
+  display         : inline-block;
+  width           : 6em;
+  height          : auto;
+  padding         : 1px 0;
+  background-color: #fff;
+  color           : #3a3c38;
+  text-align      : center;
+  font-weight     : lighter;
+  font-size       : 1.125em;
+  transition      : background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+.button:hover {
+  background-color: rgba(255, 255, 255, 0);
+  color           : #fff;
+}
+
+#username {
+  width           : 20em;
+  height          : auto;
+  margin          : auto;
+  padding         : 1.25% 2.5%;
+  outline         : none;
+  border          : none;
+  background-color: #fff;
+  color           : #3a3c38;
+  font-size       : 1.125em;
+  transition      : background-color 1s ease-in-out, color 1s ease-in-out;
+}
+
+#username:focus {
+  background-color: rgba(255, 255, 255, 0);
+  color           : #fff;
+}
