@@ -1,3 +1,7 @@
 *.DS_Store
 .ropeproject
+<<<<<<< HEAD
 __pycache__
+=======
+__pycache__/
+>>>>>>> c018c25379a53354d39c2fc3d59f6b09a04b2392
