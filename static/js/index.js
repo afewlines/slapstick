@@ -26,7 +26,7 @@ function submitUsername() {
   }
 
   console.log("username \"" + username + "\" checks out!");
-  window.location = "play/" + username;
+  socket.emit('user connect', username);
 }
 
 function processForm(e) {
@@ -49,4 +49,13 @@ if (form.attachEvent) {
 
 socket.on('question', function (text) {
   console.log("Question is: " + text);
+});
+
+socket.on('play', function (payload) {
+  console.log(payload);
+  if (payload[0]) {
+    window.location = ("/play/" + payload[1]);
+  } else {
+    window.alert("invalid username!");
+  }
 });

@@ -19,7 +19,7 @@ def index():
 
 
 @app.route('/play')
-def redirect_to_home():
+def play():
     return redirect(url_for('index'))
 
 
@@ -33,27 +33,26 @@ def admin():
     return render_template('admin.html', players=brains.players_get())
 
 
-@app.route('/play/<username>', methods=['GET', 'POST'])
+@app.route('/play/<username>')
 def play_user(username):
     # TODO: check if username actually exists
-    return render_template('play.html', username=username[:32])
+    print('hey,', username)
+    if brains.players_find(username):
+        return render_template('play.html', username=username[:32])
+    else:
+        return redirect(url_for('index'))
 
 
 #
 # SOCKET I/O
-@socketio.on('user connect')
-def user_connect(username):
-    print("\nCONNECTING:", username['data'])
-    # new player with 0 points created
-    if brains.players_add(username['data']):
-        print("CONNECTED:", username['data'])
-    else:
-        print(username['data'], "FAILED TO CONNECT")
-    return
-
 
 def update_leaderboard():
     emit('update leaderboard', brains.players_get(), broadcast=True)
+
+
+@socketio.on('user connect')
+def user_connect(username):
+    emit('play', [brains.players_add(username), username])
 
 
 @socketio.on('ping')
