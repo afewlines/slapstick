@@ -17,7 +17,7 @@
       </div>
 
       <div class="box" id="landing">
-        <table class="players">
+        <table class="players" id="players">
           <tr>
             <th>name</th>
             <th>score</th>
@@ -26,17 +26,27 @@
           <tr>
             <td>dweeble</td>
             <td>50</td>
-            <td>[ v]</td>
+            <td class="dropdown" onclick="toggleDropdown(this)">
+              actions
+              <ul style="display: none;">
+                <li onclick="fireOption(this)">remove</li>
+                <li onclick="fireOption(this)">reset score</li>
+                <li onclick="fireOption(this)">goof</li>
+              </ul>
+            </td>
           </tr>
         </table>
       </div>
 
       <div class="buttons">
-        <div class="button" style="transform-origin: left;" onclick="startGame()">
+        <div class="button" style="transform-origin: center;" onclick="startGame()">
           start game
         </div>
-        <div class="button" style="transform-origin: right;" onclick="sendPing()">
+        <div class="button" style="transform-origin: center;" onclick="sendPing()">
           send ping
+        </div>
+        <div class="button" style="transform-origin: center;" onclick="updatePlayers()">
+          refresh
         </div>
       </div>
 

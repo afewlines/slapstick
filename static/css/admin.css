@@ -11,11 +11,12 @@
 }
 
 .box table {
+  width : 100%;
   margin: auto;
 }
 
 .box th {
-  width: 45%;
+  width: 33%;
 }
 
 .buttons {
@@ -42,6 +43,59 @@
 .button:hover {
   background-color: rgba(255, 255, 255, 0);
   color           : #fff;
+}
+
+.dropdown {
+  position        : relative;
+  width           : 50%;
+  min-width       : 6em;
+  height          : 1em;
+  margin          : auto;
+  background-color: #fff;
+  color           : #bfbfbf;
+  text-align      : center;
+  margin          : 0 auto;
+  transition      : color 0.5s ease-in-out;
+}
+
+.dropdown:hover {
+  color: #333333;
+}
+
+.dropdown > ul {
+  position  : absolute;
+  z-index   : 2;
+  margin    : 0;
+  padding   : 0;
+  left      : 0;
+  right     : 0;
+  list-style: none;
+  text-align: center;
+  top       : 1.5em;
+  opacity   : 0;
+  background: #fff;
+  transition: opacity 0.125s ease-in-out;
+}
+
+.dropdown li {
+  color           : #bfbfbf;
+  background-color: #fff;
+  transition      : background-color 0.5s ease-in-out;
+}
+
+.dropdown li:hover {
+  background-color: #333333;
+}
+
+ul.show {
+  opacity: 1;
+}
+
+.dropdown ul ul td {
+  width   : 170px;
+  float   : none;
+  display : list-item;
+  position: relative;
 }
 
 #username {

@@ -3,7 +3,7 @@ import sys
 from random import shuffle
 
 from flask import Flask, redirect, render_template, request, url_for
-from flask_socketio import SocketIO, emit
+from flask_socketio import SocketIO, emit, send
 
 from brains import Brains
 
@@ -42,9 +42,9 @@ def play_user(username):
     else:
         return redirect(url_for('index'))
 
-
 #
 # SOCKET I/O
+
 
 def update_leaderboard():
     emit('update leaderboard', brains.players_get(), broadcast=True)
@@ -53,6 +53,12 @@ def update_leaderboard():
 @socketio.on('user connect')
 def user_connect(username):
     emit('play', [brains.players_add(username), username])
+
+
+@socketio.on('players get')
+def get_players():
+    print(brains.players_get())
+    emit('players list', brains.players_get())
 
 
 @socketio.on('ping')
