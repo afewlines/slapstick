@@ -3,42 +3,43 @@
 }
 
 .promptbox {
-  color     : #000000;
-  text-align: center;
-  padding   : 0 20%;
-  width     : 100%;
+  width      : 100%;
+  padding    : 2em;
+  text-align : center;
+  color      : #bfbfbf;
+  font-weight: lighter;
 }
 
 .cardholder {
   margin: auto;
-  width : 90%;
+  width : 100%;
 }
 
 .cardbox {
-  color           : #5c5e59;
-  font-size       : 1em;
-  font-weight     : 100;
-  background-color: #fff;
-  background-clip : padding-box;
   float           : left;
   width           : 20%;
   height          : 150px;
   margin          : auto;
   padding         : 1em;
   border          : 5px solid rgba(0,0,0,0);
+  background-color: #fff;
+  background-clip : padding-box;
+  color           : #5c5e59;
+  font-size       : 1em;
+  font-weight     : 100;
   transition      : background-color 0.25s;
 }
 
 .subbox {
-  color      : #5c5e59;
-  font-size  : 1em;
-  font-weight: 100;
   float      : left;
   width      : 50%;
   height     : 100%;
   margin     : auto;
   padding    : 0;
   border     : 5px solid rgba(0,0,0,0);
+  color      : #5c5e59;
+  font-size  : 1em;
+  font-weight: 100;
 }
 
 .subbox > p {
@@ -56,8 +57,8 @@
   padding    : 1px 0;
   background : #fff;
   text-align : center;
-  font-weight: lighter;
   font-size  : 1em;
+  font-weight: 100;
   transition : width 0.5s, background 0.5s;
 }
 
@@ -65,8 +66,8 @@
   width      : 40%;
   height     : auto;
   margin     : 0 30%;
-  color      : #5c5e59;
   text-align : center;
+  color      : #5c5e59;
   font-size  : 1em;
   font-weight: 100;
 }

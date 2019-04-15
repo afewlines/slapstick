@@ -58,7 +58,7 @@ def user_connect(username):
 @socketio.on('players get')
 def get_players():
     print(brains.players_get())
-    emit('players list', brains.players_get())
+    emit('players list', brains.players_get(), broadcast=True)
 
 
 @socketio.on('ping')

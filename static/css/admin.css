@@ -3,7 +3,7 @@
 }
 
 .box {
-  width     : 50%;
+  width     : 75%;
   margin    : auto;
   text-align: left;
   padding   : 1%;
@@ -47,8 +47,7 @@
 
 .dropdown {
   position        : relative;
-  width           : 50%;
-  min-width       : 6em;
+  width           : 6em;
   height          : 1em;
   margin          : auto;
   background-color: #fff;

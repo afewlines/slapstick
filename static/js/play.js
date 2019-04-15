@@ -59,21 +59,22 @@ socket.on('update hand', function (msg) {
   document.getElementById("choosecard").style.display = "block";
 });
 
-socket.on('update leaderboard', function (msg) {
-  var scores = msg.split("|");
+socket.on('players list', function (data) {
+  var players = data;
+  console.log(data);
 
-  var myNode = document.getElementById("leaderboard");
-  while (myNode.firstChild) {
-    myNode.removeChild(myNode.firstChild);
+  var leaderboard = document.getElementById("leaderboard");
+  while (leaderboard.firstChild) {
+    leaderboard.removeChild(leaderboard.firstChild);
   }
 
-  for (var i = 0; i < scores.length; i++) {
+  for (var player in players) {
     var score = document.createElement("div");
     score.className = "score";
     var para = document.createElement("p");
-    para.appendChild(document.createTextNode(scores[i]));
+    para.appendChild(document.createTextNode(player + ": " + players[player]));
     score.appendChild(para);
-    document.getElementById("leaderboard").appendChild(score);
+    leaderboard.appendChild(score);
   }
 });
 

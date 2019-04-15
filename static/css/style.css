@@ -4,9 +4,10 @@ body {
 }
 
 .wrapper {
-  width     : 100%;
-  height    : 500px;
-  margin-top: calc(40vh - 250px);
+  width    : 100%;
+  max-width: 550px;
+  height   : 500px;
+  margin   : calc(40vh - 250px) auto auto auto;
 }
 
 .header {
