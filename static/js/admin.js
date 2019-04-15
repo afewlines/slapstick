@@ -9,6 +9,15 @@ function sendPing() {
   socket.emit('ping');
 }
 
+function startGame() {
+  socket.emit('start game');
+}
+
+function forceCheck() {
+  socket.emit('force check');
+}
+
+
 socket.on('players list', function (payload) {
   console.log("recieved");
   var targetRoot = document.getElementById("players").children[0];

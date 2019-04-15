@@ -49,6 +49,13 @@ def update_leaderboard():
     emit('update leaderboard', brains.players_get(), broadcast=True)
 
 
+@socketio.on('force check')
+def check_answers():
+    result = brains.answers_check()
+    emit('result', result, broadcast=True)
+    print(result)
+
+
 @socketio.on('user connect')
 def user_connect(username):
     username = username['data']
@@ -60,6 +67,21 @@ def user_connect(username):
 def get_players():
     print(brains.players_get())
     emit('players list', brains.players_get(), broadcast=True)
+
+
+@socketio.on('start game')
+def start_game():
+    print("\nSTARTING")
+    brains.start_game()
+    emit('update question', brains.get_question(), broadcast=True)
+    emit('update answers', brains.get_answers(), broadcast=True)
+
+
+@socketio.on('submit')
+def submit(data):
+    print(data)
+    if brains.answers_submit(data):
+        check_answers()
 
 
 @socketio.on('ping')

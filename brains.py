@@ -6,6 +6,8 @@ class Brains(object):
 
     def __init__(self):
         self.players = {}
+        self.trivia_pot = None
+        self.answer_pot = {}
 
     def players_get(self):
         return self.players
@@ -31,3 +33,37 @@ class Brains(object):
 
     def players_find(self, target):
         return target in self.players
+
+    def get_question(self):
+        return self.trivia_pot.get_question()
+
+    def get_answer(self):
+        return self.trivia_pot.get_answer()
+
+    def get_answers(self):
+        return self.trivia_pot.get_answers_shuffled()
+
+    def check(self, target):
+        return self.trivia_pot.check_answer(target)
+
+    def start_game(self):
+        self.trivia_pot = trivia.load_trivia_questions()
+        self.trivia_pot.new_question()
+
+    def answers_clear(self):
+        self.answer_pot = {}
+
+    def answers_submit(self, data):
+        self.answer_pot[data[0]] = data[1]
+        if len(self.answer_pot) >= len(self.players):
+            return True
+        return False
+
+    def answers_check(self):
+        for submission in self.answer_pot:
+            print(submission, self.answer_pot[submission])
+            self.answer_pot[submission] = self.trivia_pot.check_answer(
+                self.answer_pot[submission])
+            print(submission, self.answer_pot[submission])
+
+        return [self.get_answer(), self.answer_pot]

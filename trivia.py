@@ -15,6 +15,11 @@ class TriviaPot():
             return ""
         return self.current.get_question()
 
+    def get_answer(self):
+        if self.current == None:
+            return ""
+        return self.current.get_answer()
+
     def get_answers(self):
         if self.current == None:
             return []
@@ -28,7 +33,8 @@ class TriviaPot():
     def check_answer(self, target):
         if self.current == None:
             return False
-        return self.current.check_answer(self.get_answers_shuffled()[target - 1])
+        return self.current.check_answer(target)
+        # return self.current.check_answer(self.get_answers_shuffled()[target - 1])
 
     def display(self):
         print("QUESTION:\n\t{}".format(self.get_question()))
@@ -61,11 +67,16 @@ class TriviaQuestion():
     def __init__(self, question, answers):
         self.question = question
         self.answers = (answers[0], answers[1:])
-        self.answers_shuffled = answers
+        self.answers_shuffled = self.answers[1]
+        shuffle(self.answers_shuffled)
+        self.answers_shuffled = self.answers_shuffled[:3] + [answers[0]]
         shuffle(self.answers_shuffled)
 
     def get_question(self):
         return self.question
+
+    def get_answer(self):
+        return self.answers[0]
 
     def get_answers(self):
         return [self.answers[0]] + self.answers[1]

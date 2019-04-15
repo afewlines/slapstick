@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-.promptbox {
+.questionbox {
   width      : 100%;
   padding    : 2em;
   text-align : center;
@@ -15,19 +15,42 @@
   width : 100%;
 }
 
-.cardbox {
+.cardholder:after {
+  content: "";
+  display: table;
+  clear  : both;
+}
+
+.answerbox {
+  position        : relative;
+  z-index         : 1;
   float           : left;
-  width           : 20%;
+  width           : calc(25% - 0.5em);
   height          : 150px;
-  margin          : auto;
-  padding         : 1em;
-  border          : 5px solid rgba(0,0,0,0);
+  margin          : 0.25em;
+  transform       : scale(1);
+  padding         : 0.5em;
+  box-shadow      : 0 0;
   background-color: #fff;
-  background-clip : padding-box;
   color           : #5c5e59;
   font-size       : 1em;
   font-weight     : 100;
-  transition      : background-color 0.25s;
+  transition      : background-color 0.25s, transform 0.25s ease-in, all 0.25s;
+}
+
+.answerbox:hover {
+  z-index         : 40;
+  background-color: #cbddff;
+  box-shadow      : 0 0 1em;
+  transform       : scale(1.125);
+  transition      : background-color 0.5s, transform 0.5s ease-out, all 0.5s;
+}
+
+.selected {
+  z-index         : 50;
+  background-color: #d9cbe2;
+  transform       : scale(1.125);
+  box-shadow      : 0 0 0.25em;
 }
 
 .subbox {
@@ -49,6 +72,11 @@
   transition      : background-color 0.5s;
 }
 
+.subbox:hover > p {
+  background-color: #cbddff;
+  transition      : background-color 0.5s;
+}
+
 .choosecard {
   display    : block;
   width      : 6em;
@@ -62,6 +90,16 @@
   transition : width 0.5s, background 0.5s;
 }
 
+.choosecard:hover {
+  background: #cbddff;
+  width     : 5em;
+}
+
+.choosecard.submitted {
+  background-color: #c2d3c0;
+  width           : 8em;
+}
+
 .leaderboard {
   width      : 40%;
   height     : auto;
@@ -72,43 +110,19 @@
   font-weight: 100;
 }
 
-.score {
-  float : left;
-  width : 50%;
-  height: auto;
-}
-
-.cardbox:hover {
-  background-color: #cbddff;
-  padding         : 15px;
-  border          : 5px solid rgba(0,0,0,0);
-  transition      : background-color 0.5s;
-}
-
-.choosecard:hover {
-  background: #cbddff;
-  width     : 5em;
-  transition: width 0.5s, background 0.5s;
-}
-
-.subbox:hover > p {
-  background-color: #cbddff;
-  transition      : background-color 0.5s;
-}
-
 .leaderboard:after {
   content: "";
   display: table;
   clear  : both;
 }
 
-.cardholder:after {
-  content: "";
-  display: table;
-  clear  : both;
+.score {
+  float : left;
+  width : 50%;
+  height: auto;
 }
 @media (max-width: 800px) {
-  .cardbox {
+  .answerbox {
     font-size  : 16px;
     font-weight: 250;
     width      : 50%;
