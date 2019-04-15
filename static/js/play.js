@@ -6,10 +6,6 @@ var started = false;
 var judge = false;
 var username = decodeURIComponent(window.location.pathname.split("/")[2])
 
-socket.on('connect', function () {
-  socket.emit('user connect', { data: username });
-});
-
 socket.on('starting', function (chooser) {
   if (chooser == username) {
     window.alert('you are judging');

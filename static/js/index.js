@@ -26,7 +26,8 @@ function submitUsername() {
   }
 
   console.log("username \"" + username + "\" checks out!");
-  socket.emit('user connect', username);
+  console.log(username);
+  socket.emit('user connect', { data: username });
 }
 
 function processForm(e) {

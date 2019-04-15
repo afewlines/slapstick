@@ -1,6 +1,5 @@
 
 import sys
-from random import shuffle
 
 from flask import Flask, redirect, render_template, request, url_for
 from flask_socketio import SocketIO, emit, send
@@ -52,6 +51,8 @@ def update_leaderboard():
 
 @socketio.on('user connect')
 def user_connect(username):
+    username = username['data']
+    print('here', username, type(username))
     emit('play', [brains.players_add(username), username])
 
 
@@ -88,5 +89,5 @@ def main():
 
 
 if __name__ == '__main__':
-    # main()
-    app.run(debug=True, host='localhost', port=8080)
+    main()
+    #app.run(debug=True, host='localhost', port=8080)

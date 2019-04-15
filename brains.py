@@ -1,3 +1,6 @@
+import trivia
+
+
 class Brains(object):
     """docstring for Brains."""
 
@@ -8,13 +11,13 @@ class Brains(object):
         return self.players
 
     def players_add(self, username):
-
-        print("\nCONNECTING:", username)
+        print("\nCONNECTING:", username, type(username))
+        print(self.players)
         if username in self.players:
             print(username, "FAILED TO CONNECT")
             return False
         else:
-            self.players[username] = [0]
+            self.players[username] = 0
             print("CONNECTED:", username)
             return True
 
