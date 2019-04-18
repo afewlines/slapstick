@@ -4,10 +4,24 @@ import trivia
 class Brains(object):
     """docstring for Brains."""
 
-    def __init__(self):
+    def __init__(self, rounds=10):
         self.players = {}
         self.trivia_pot = None
         self.answer_pot = {}
+        self.rounds = rounds
+        self.current = 0
+
+    def start_game(self):
+        self.current = 0
+        self.trivia_pot = trivia.load_trivia_questions()
+
+    def next_question(self):
+        if self.current <= self.rounds:
+            self.current += 1
+            self.trivia_pot.new_question()
+            return True
+        else:
+            return False
 
     def players_get(self):
         return self.players
@@ -45,10 +59,6 @@ class Brains(object):
 
     def check(self, target):
         return self.trivia_pot.check_answer(target)
-
-    def start_game(self):
-        self.trivia_pot = trivia.load_trivia_questions()
-        self.trivia_pot.new_question()
 
     def answers_clear(self):
         self.answer_pot = {}

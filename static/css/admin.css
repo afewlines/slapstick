@@ -4,7 +4,7 @@
 
 .box {
   width     : 75%;
-  margin    : auto;
+  margin    : 1em auto;
   text-align: left;
   padding   : 1%;
   color     : #bfbfbf;
@@ -22,7 +22,7 @@
 .buttons {
   width     : 50%;
   left      : 37.5%;
-  height    : 4em;
+  height    : 6em;
   margin    : auto;
   text-align: center;
 }
@@ -31,6 +31,7 @@
   display         : inline-block;
   width           : 6em;
   height          : auto;
+  margin          : 0.5em;
   padding         : 1px 0;
   background-color: #fff;
   color           : #3a3c38;

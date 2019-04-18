@@ -52,6 +52,15 @@ socket.on('update answers', function (answers) {
   console.log(answers);
 
   var holder = document.getElementById("holder");
+  var subbutton = document.getElementById("choosecard");
+
+  if (subbutton.classList.contains("submitted")) {
+    subbutton.classList.remove("submitted");
+    subbutton.innerHTML = "<p>submit</p>";
+  }
+  selected = [];
+  submitted = false;
+
   while (holder.firstChild) {
     holder.removeChild(holder.firstChild);
   }
@@ -65,7 +74,6 @@ socket.on('update answers', function (answers) {
     });
     document.getElementById("holder").appendChild(answerbox);
   }
-
 
   document.getElementById("choosecard").style.display = "block";
 });
@@ -134,9 +142,7 @@ function submitCards(elmnt) {
     // force it to grab first because it's just trivia
     socket.emit('submit', [username, selected[0]]);
     elmnt.classList.add("submitted");
-    //elmnt.style.backgroundColor = "#c2d3c0";
-    //elmnt.style.width = "8em";
-    //elmnt.innerHTML = "<p>submitted</p>";
+    elmnt.innerHTML = "<p>submitted</p>";
   } else {
     window.alert("please select more cards");
   }

@@ -10,6 +10,7 @@ app = Flask(__name__)
 socketio = SocketIO(app)
 brains = Brains()
 chooser = ""
+index = 0
 
 
 @app.route('/')
@@ -49,11 +50,20 @@ def update_leaderboard():
     emit('update leaderboard', brains.players_get(), broadcast=True)
 
 
+def update_game():
+    if not brains.next_question():
+        return False
+    emit('update question', brains.get_question(), broadcast=True)
+    emit('update answers', brains.get_answers(), broadcast=True)
+    return True
+
+
 @socketio.on('force check')
 def check_answers():
     result = brains.answers_check()
     emit('result', result, broadcast=True)
     print(result)
+    update_game()
 
 
 @socketio.on('user connect')
@@ -72,9 +82,10 @@ def get_players():
 @socketio.on('start game')
 def start_game():
     print("\nSTARTING")
-    brains.start_game()
-    emit('update question', brains.get_question(), broadcast=True)
-    emit('update answers', brains.get_answers(), broadcast=True)
+    index = 0
+    if index < 1:
+        brains.start_game()
+    update_game()
 
 
 @socketio.on('submit')
