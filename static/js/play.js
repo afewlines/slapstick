@@ -100,7 +100,7 @@ function selectCard(elmnt) {
 }
 
 function selectSub(elmnt) {
-  if (submitted) {
+  if (submitted || (!started)) {
     return;
   }
 
@@ -125,7 +125,7 @@ function selectSub(elmnt) {
 }
 
 function submitCards(elmnt) {
-  if (submitted) {
+  if (submitted || (!started)) {
     return;
   }
 
