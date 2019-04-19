@@ -42,7 +42,7 @@ function createRow(username, points) {
   row_root.appendChild(pts);
 
   var dropdown = document.createElement("td");
-  dropdown.innerHTML = "actions";
+  dropdown.innerHTML = "Actions";
   dropdown.classList.add("dropdown");
   dropdown.addEventListener("click", function () {
     var tgt = dropdown;
@@ -55,7 +55,7 @@ function createRow(username, points) {
   dropdown.appendChild(payload);
 
   var remove = document.createElement("li");
-  remove.innerHTML = "remove";
+  remove.innerHTML = "Remove";
   remove.addEventListener("click", function () {
     var tgt = remove;
     fireOption(tgt);
@@ -63,7 +63,7 @@ function createRow(username, points) {
   payload.appendChild(remove);
 
   var reset = document.createElement("li");
-  reset.innerHTML = "reset score";
+  reset.innerHTML = "Reset Score";
   reset.addEventListener("click", function () {
     var tgt = reset;
     fireOption(tgt);
@@ -71,7 +71,7 @@ function createRow(username, points) {
   payload.appendChild(reset);
 
   var goof = document.createElement("li");
-  goof.innerHTML = "goof";
+  goof.innerHTML = "Goof";
   goof.addEventListener("click", function () {
     var tgt = goof;
     fireOption(tgt);

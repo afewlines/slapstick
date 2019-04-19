@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>seeker's cards - admin</title>
+    <title>Slapstick - Admin</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="../static/favicon.png">
@@ -13,25 +13,25 @@
 
     <div class="wrapper">
       <div class="header">
-        seeker's cards: admin
+        Slapstick: Admin
       </div>
 
       <div class="box" id="landing">
         <table class="players" id="players">
           <tr>
-            <th>name</th>
-            <th>score</th>
+            <th>Name</th>
+            <th>Score</th>
             <th></th>
           </tr>
           <tr>
             <td>dweeble</td>
             <td>50</td>
             <td class="dropdown" onclick="toggleDropdown(this)">
-              actions
+              Actions
               <ul style="display: none;">
-                <li onclick="fireOption(this)">remove</li>
-                <li onclick="fireOption(this)">reset score</li>
-                <li onclick="fireOption(this)">goof</li>
+                <li onclick="fireOption(this)">Remove</li>
+                <li onclick="fireOption(this)">Reset Score</li>
+                <li onclick="fireOption(this)">Goof</li>
               </ul>
             </td>
           </tr>
@@ -40,21 +40,21 @@
 
       <div class="buttons">
         <div class="button" style="transform-origin: center;" onclick="startGame()">
-          start game
+          Start Game
         </div>
         <div class="button" style="transform-origin: center;" onclick="forceCheck()">
-          force check
+          Force Check
         </div>
         <div class="button" style="transform-origin: center;" onclick="sendPing()">
-          send ping
+          Send Ping
         </div>
         <div class="button" style="transform-origin: center;" onclick="updatePlayers()">
-          refresh
+          Refresh
         </div>
       </div>
 
       <div class="footer">
-        <p>copyrighted 20xx, probably</p>
+        <p>Copyrighted 20xx, probably</p>
       </div>
     </div>
 

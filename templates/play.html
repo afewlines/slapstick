@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>seeker's cards</title>
+    <title>slapstick</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
@@ -13,33 +13,33 @@
     <div class="wrapper">
 
       <div class="header">
-        welcome,
+        Welcome,
         {{ username }}.
       </div>
 
-      <div class="questionbox" id="question">waiting to start</div>
+      <div class="questionbox" id="question">Waiting to Start</div>
 
       <div class="cardholder" id="holder">
         <div class="subbox">
-          <p>~instructions~</p>
-          <p>hold on tite</p>
-          <p>the game'll start shortly</p>
+          <p>~INSTRUCTIONS~</p>
+          <p>Hold on tite;</p>
+          <p>the game'll start shortly.</p>
         </div>
         <div class="subbox">
-          <p>then select an answer</p>
-          <p>pray to whatever god(s) you believe in</p>
-          <p>and smack that submit button</p>
+          <p>Then select an answer,</p>
+          <p>pray to whatever god(s) you believe in,</p>
+          <p>and smack that submit button.</p>
         </div>
       </div>
 
       <div class="choosecard" id="choosecard" onclick="submitCards(this)">
-        <p>select</p>
+        <p>Select</p>
       </div>
 
       <div class="leaderboard" id="leaderboard"></div>
 
       <div class="footer">
-        <p>copyrighted 20xx, probably</p>
+        <p>Copyrighted 20xx, probably</p>
       </div>
 
     </div>

@@ -7,20 +7,12 @@ var judge = false;
 var username = decodeURIComponent(window.location.pathname.split("/")[2])
 
 socket.on('starting', function (chooser) {
-  if (chooser == username) {
-    window.alert('you are judging');
-    judge = true;
-    document.getElementById("choosecard").style.display = "none";
-  } else {
-    judge = false;
-  }
-  document.getElementById("judge").innerHTML = "current judge: " + chooser;
   started = true;
   socket.emit('get hand', { data: username });
   choosecard = document.getElementById("choosecard");
   choosecard.style.backgroundColor = "";
   choosecard.style.width = "";
-  choosecard.innerHTML = "<p>select</p>";
+  choosecard.innerHTML = "<p>Submit</p>";
   submitted = false;
   selected = [];
 });
@@ -56,7 +48,7 @@ socket.on('update answers', function (answers) {
 
   if (subbutton.classList.contains("submitted")) {
     subbutton.classList.remove("submitted");
-    subbutton.innerHTML = "<p>submit</p>";
+    subbutton.innerHTML = "<p>Submit</p>";
   }
   selected = [];
   submitted = false;
@@ -80,9 +72,9 @@ socket.on('update answers', function (answers) {
 
 socket.on('result', function (payload) {
   if (payload[1][username]) {
-    window.alert("you got it right!");
+    window.alert("You got it right!");
   } else {
-    window.alert("sorry, ur wrong nerd. correct answer was: " + payload[0]);
+    window.alert("Sorry, ur wrong nerd.\nThe correct answer was: " + payload[0]);
   }
 });
 
@@ -142,8 +134,8 @@ function submitCards(elmnt) {
     // force it to grab first because it's just trivia
     socket.emit('submit', [username, selected[0]]);
     elmnt.classList.add("submitted");
-    elmnt.innerHTML = "<p>submitted</p>";
+    elmnt.innerHTML = "<p>Submitted</p>";
   } else {
-    window.alert("please select more cards");
+    window.alert("Please select more cards.");
   }
 }

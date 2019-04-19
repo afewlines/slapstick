@@ -20,7 +20,7 @@ function submitUsername() {
   }
 
   if (offenders.length > 0) {
-    window.alert("username contains ILLEGAL characters!!\nhere they are: " + offenders.join(""));
+    window.alert("Username contains ILLEGAL characters!!\nHere they are: " + offenders.join(""));
     document.getElementById("username").value = "";
     return;
   }
@@ -57,6 +57,6 @@ socket.on('play', function (payload) {
   if (payload[0]) {
     window.location = ("/play/" + payload[1]);
   } else {
-    window.alert("invalid username!");
+    window.alert("Invalid Username!");
   }
 });
