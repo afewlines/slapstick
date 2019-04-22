@@ -101,11 +101,10 @@
 }
 
 .leaderboard {
-  width      : 40%;
+  width      : 95%;
   height     : auto;
-  margin     : 0 30%;
+  margin     : auto;
   text-align : center;
-  color      : #5c5e59;
   font-size  : 1em;
   font-weight: 100;
 }
@@ -118,8 +117,9 @@
 
 .score {
   float : left;
-  width : 50%;
+  width : 33%;
   height: auto;
+  color : #fff;
 }
 @media (max-width: 800px) {
   .answerbox {

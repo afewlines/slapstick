@@ -7,14 +7,7 @@ var judge = false;
 var username = decodeURIComponent(window.location.pathname.split("/")[2])
 
 socket.on('starting', function (chooser) {
-  started = true;
-  socket.emit('get hand', { data: username });
-  choosecard = document.getElementById("choosecard");
-  choosecard.style.backgroundColor = "";
-  choosecard.style.width = "";
-  choosecard.innerHTML = "<p>Submit</p>";
-  submitted = false;
-  selected = [];
+
 });
 
 socket.on('players list', function (data) {
@@ -42,12 +35,15 @@ socket.on('update question', function (question) {
 
 socket.on('update answers', function (answers) {
   console.log(answers);
+  started = true;
 
   var holder = document.getElementById("holder");
   var subbutton = document.getElementById("choosecard");
 
   if (subbutton.classList.contains("submitted")) {
     subbutton.classList.remove("submitted");
+    subbutton.innerHTML = "<p>Submit</p>";
+  } else {
     subbutton.innerHTML = "<p>Submit</p>";
   }
   selected = [];

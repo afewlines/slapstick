@@ -65,15 +65,18 @@ class Brains(object):
 
     def answers_submit(self, data):
         self.answer_pot[data[0]] = data[1]
+        print(len(self.answer_pot), len(self.players))
         if len(self.answer_pot) >= len(self.players):
             return True
         return False
 
     def answers_check(self):
-        for submission in self.answer_pot:
-            print(submission, self.answer_pot[submission])
-            self.answer_pot[submission] = self.trivia_pot.check_answer(
-                self.answer_pot[submission])
-            print(submission, self.answer_pot[submission])
+        temp = self.answer_pot
+        self.answer_pot = {}
+        for submission in temp:
+            print(submission, temp[submission])
+            temp[submission] = self.trivia_pot.check_answer(
+                temp[submission])
+            print(submission, temp[submission])
 
-        return [self.get_answer(), self.answer_pot]
+        return [self.get_answer(), temp]
