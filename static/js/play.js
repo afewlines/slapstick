@@ -6,6 +6,14 @@ var started = false;
 var judge = false;
 var username = decodeURIComponent(window.location.pathname.split("/")[2])
 
+socket.on('connect', function () {
+  socket.emit('players get');
+});
+
+socket.on('disconnect', function () {
+  socket.emit('ping');
+});
+
 socket.on('starting', function (chooser) {
 
 });

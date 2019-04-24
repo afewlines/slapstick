@@ -17,7 +17,6 @@ function forceCheck() {
   socket.emit('force check');
 }
 
-
 socket.on('players list', function (payload) {
   console.log("recieved");
   var targetRoot = document.getElementById("players").children[0];

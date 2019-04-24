@@ -6,6 +6,7 @@ class Brains(object):
 
     def __init__(self, rounds=10):
         self.players = {}
+        self.doomed = []
         self.trivia_pot = None
         self.answer_pot = {}
         self.rounds = rounds
@@ -66,17 +67,31 @@ class Brains(object):
     def answers_submit(self, data):
         self.answer_pot[data[0]] = data[1]
         print(len(self.answer_pot), len(self.players))
-        if len(self.answer_pot) >= len(self.players):
+        pot = [i for i in self.answer_pot if i not in self.doomed]
+        players = [i for i in self.players if i not in self.doomed]
+        if len(pot) >= len(players):
             return True
         return False
 
     def answers_check(self):
         temp = self.answer_pot
         self.answer_pot = {}
-        for submission in temp:
+        for submission in [i for i in temp if i not in self.doomed]:
             print(submission, temp[submission])
             temp[submission] = self.trivia_pot.check_answer(
                 temp[submission])
             print(submission, temp[submission])
 
         return [self.get_answer(), temp]
+
+    def doom(self, target):
+        if target in self.players:
+            self.doomed.append(target)
+        else:
+            print("{} is a demigod".format(target))
+
+    def doomed_get(self):
+        return self.doomed
+
+    def doomed_count(self):
+        return len(self.doomed)

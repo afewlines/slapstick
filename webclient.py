@@ -104,8 +104,8 @@ def ping():
 # HELPER FUNCTIONS
 
 
-def main():
-    print(sys.argv)
+def start_server():
+    # print(sys.argv)
     IP = 'localhost'
     PORT = 8080
 
@@ -118,9 +118,9 @@ def main():
     try:
         app.run(debug=True, host=IP, port=PORT)
     except:
-        print("INVALID HOSTNAME")
+        print("SERVER NOT STARTED")
 
 
 if __name__ == '__main__':
-    main()
+    start_server()
     #app.run(debug=True, host='localhost', port=8080)
