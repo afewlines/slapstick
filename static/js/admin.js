@@ -95,6 +95,7 @@ function toggleDropdown(drop) {
 function fireOption(option) {
   var target = option.parentElement.parentElement.parentElement.children[0].innerHTML;
   console.log(option.innerHTML + ": " + target);
+  socket.emit('admin', [target, option.innerHTML])
 }
 
 function debugg(name, pt) {

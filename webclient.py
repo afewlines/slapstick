@@ -2,12 +2,12 @@
 import sys
 
 from flask import Flask, redirect, render_template, request, url_for
-from flask_socketio import SocketIO, emit, send
+from flask_socketio import SocketIO, emit
 
 from brains import Brains
 
 app = Flask(__name__)
-socketio = SocketIO(app)
+socketio = SocketIO(app, ping_interval=15)
 brains = Brains()
 chooser = ""
 index = 0
@@ -51,6 +51,7 @@ def update_leaderboard():
 
 
 def update_game():
+    get_players()
     if not brains.next_question():
         return False
     emit('update question', brains.get_question(), broadcast=True)
@@ -60,10 +61,13 @@ def update_game():
 
 @socketio.on('force check')
 def check_answers():
+    global brains
     result = brains.answers_check()
     emit('result', result, broadcast=True)
     print(result)
-    update_game()
+    if not update_game():
+        emit('end', brains.players_get_top(), broadcast=True)
+        brains = Brains()
 
 
 @socketio.on('user connect')
@@ -77,6 +81,13 @@ def user_connect(username):
 def get_players():
     print(brains.players_get())
     emit('players list', brains.players_get(), broadcast=True)
+
+
+@socketio.on('request update')
+def req_question():
+    if brains.get_active():
+        emit('update question', brains.get_question())
+        emit('update answers', brains.get_answers())
 
 
 @socketio.on('start game')
@@ -93,6 +104,15 @@ def submit(data):
     print(data)
     if brains.answers_submit(data):
         check_answers()
+
+
+@socketio.on('admin')
+def admin_commands(payload):
+    payload[1] = payload[1].lower()
+    if brains.admin(*payload):
+        get_players()
+        if brains.answer_pot_check():
+            check_answers()
 
 
 @socketio.on('ping')
@@ -123,4 +143,4 @@ def start_server():
 
 if __name__ == '__main__':
     start_server()
-    #app.run(debug=True, host='localhost', port=8080)
+    # app.run(debug=True, host='localhost', port=8080)

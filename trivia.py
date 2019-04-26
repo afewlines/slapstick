@@ -10,6 +10,9 @@ class TriviaPot():
         self.old = contents
         self.current = None
 
+    def get_active(self):
+        return not (self.current == None)
+
     def get_question(self):
         if self.current == None:
             return ""
@@ -101,7 +104,6 @@ def load_trivia_questions():
     with open('trivia_file.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         for row in csv_reader:
-            print(len(row))
             temp = TriviaQuestion(row[0], row[1:])
             pot_out.append(temp)
         print("Processed {} Questions".format(len(pot_out)))

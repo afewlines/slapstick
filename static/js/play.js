@@ -6,16 +6,11 @@ var started = false;
 var judge = false;
 var username = decodeURIComponent(window.location.pathname.split("/")[2])
 
+
 socket.on('connect', function () {
   socket.emit('players get');
-});
-
-socket.on('disconnect', function () {
-  socket.emit('ping');
-});
-
-socket.on('starting', function (chooser) {
-
+  socket.emit('request question');
+  socket.emit('request answers');
 });
 
 socket.on('players list', function (data) {
@@ -84,6 +79,11 @@ socket.on('result', function (payload) {
 
 socket.on('ping out', function () {
   console.log("ping recieved");
+});
+
+socket.on('end', function (winner) {
+  window.alert("Game Over~\nWinner: " + winner);
+  window.location = "/";
 });
 
 function selectCard(elmnt) {
