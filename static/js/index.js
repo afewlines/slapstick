@@ -8,6 +8,9 @@ function submitUsername() {
   var complete = lettersLower + lettersUpper + numerals + punctuation
   // put into array for
   var username = document.getElementById("username").value;
+  if (username.length < 1) {
+    return;
+  }
   var nameArray = username.split("");
   var offenders = [];
 

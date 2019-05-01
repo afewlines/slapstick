@@ -19,7 +19,7 @@ class Brains(object):
         self.trivia_pot = trivia.load_trivia_questions()
 
     def next_question(self):
-        if self.current <= self.rounds:
+        if self.current < self.rounds:
             self.current += 1
             self.trivia_pot.new_question()
             return True
