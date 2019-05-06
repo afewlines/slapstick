@@ -9,8 +9,7 @@ var username = decodeURIComponent(window.location.pathname.split("/")[2])
 
 socket.on('connect', function () {
   socket.emit('players get');
-  socket.emit('request question');
-  socket.emit('request answers');
+  socket.emit('request update');
 });
 
 socket.on('players list', function (data) {
@@ -32,8 +31,9 @@ socket.on('players list', function (data) {
   }
 });
 
-socket.on('update question', function (question) {
-  document.getElementById("question").innerHTML = question;
+socket.on('update question', function (data) {
+  document.getElementById("question").innerHTML = data[0];
+  document.getElementById("questionnumber").innerHTML = "" + data[1] + " of " + data[2];
 });
 
 socket.on('update answers', function (answers) {

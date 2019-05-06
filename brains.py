@@ -4,7 +4,7 @@ import trivia
 class Brains(object):
     """docstring for Brains."""
 
-    def __init__(self, rounds=3):
+    def __init__(self, rounds=10):
         self.players = {}
         self.trivia_pot = None
         self.answer_pot = {}
@@ -33,7 +33,7 @@ class Brains(object):
             return False
 
     def get_question(self):
-        return self.trivia_pot.get_question()
+        return [self.trivia_pot.get_question(), self.current, self.rounds]
 
     def get_answer(self):
         return self.trivia_pot.get_answer()
